@@ -10,6 +10,7 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: 'Deploy code to org'
         env:
           SANDBOX_APP_KEY: ${{ secrets.SANDBOX_APP_KEY }}
