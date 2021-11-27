@@ -1,5 +1,5 @@
 
-ORG_ALIAS="DevHub"
+ORG_ALIAS="scratch-org"
 
 echo "Deploying source to scratch org"
 sfdx force:source:push -u $ORG_ALIAS
