@@ -15,4 +15,4 @@ sfdx force:auth:jwt:grant --clientid $SANDBOX_APP_KEY --jwtkeyfile keys/server.k
 
 #Create a scratch org
 echo "Creating the Scratch Org..."
-sfdx force:org:create -f config/project-scratch-def.json -a $ORG_ALIAS -s
+sfdx force:org:create -s -f config/project-scratch-def.json -a $ORG_ALIAS
