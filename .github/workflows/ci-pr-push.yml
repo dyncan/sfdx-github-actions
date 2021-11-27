@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Deploy code to org'
-        uses: actions/checkout@v2
         env:
           SANDBOX_APP_KEY: ${{ secrets.SANDBOX_APP_KEY }}
           SANDBOX_USERNAME: ${{ secrets.SANDBOX_USERNAME }}
