@@ -1,0 +1,25 @@
+name: Trigger Build on PR
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  execute:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Deploy code to org'
+        env:
+          SANDBOX_APP_KEY: ${{ secrets.SANDBOX_APP_KEY }}
+          SANDBOX_USERNAME: ${{ secrets.SANDBOX_USERNAME }}
+          SANDBOX_CERT_KEY: ${{ secrets.SANDBOX_CERT_KEY }}
+        run: |
+          chmod +x ./build/*.sh
+          ./build/install_dependencies.sh
+          ./build/run_sfdx_scanner.sh
+          ./build/login_to_sandbox.sh "$SANDBOX_CERT_KEY" "$SANDBOX_APP_KEY" "$SANDBOX_USERNAME" 
+          ./build/deploy_code.sh
+        shell: bash
