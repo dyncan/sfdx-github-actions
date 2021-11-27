@@ -20,7 +20,6 @@ jobs:
         run: |
           chmod +x ./build/*.sh
           ./build/install_dependencies.sh
-          ./build/run_sfdx_scanner.sh
           ./build/login_to_sandbox.sh "$SANDBOX_CERT_KEY" "$SANDBOX_APP_KEY" "$SANDBOX_USERNAME" 
           ./build/deploy_code.sh
         shell: bash
