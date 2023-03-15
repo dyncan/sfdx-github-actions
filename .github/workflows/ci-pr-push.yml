@@ -13,9 +13,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: 'Deploy code to org'
         env:
-          SANDBOX_APP_KEY: ${{ secrets.SANDBOX_APP_KEY }}
-          SANDBOX_USERNAME: ${{ secrets.SANDBOX_USERNAME }}
-          SANDBOX_CERT_KEY: ${{ secrets.SANDBOX_CERT_KEY }}
+          SANDBOX_APP_KEY: ${{ secrets.SFDC_PROD_CLIENTID }}
+          SANDBOX_USERNAME: ${{ secrets.SFDC_PROD_USER }}
+          SANDBOX_CERT_KEY: ${{ secrets.SFDC_SERVER_KEY }}
         run: |
           chmod +x ./build/*.sh
           ./build/install_dependencies.sh
